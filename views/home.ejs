@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>Home | Blogify</title>
+
+  
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+
+<%- include('./partials/nav') %>
+
+<main class="home page">
+
+  
+  <section class="home-header">
+    <h1>Latest Writing</h1>
+    <p>Thoughts, stories & ideas</p>
+  </section>
+
+ 
+  <section class="blog-grid">
+    <% blogs.forEach(blog => { %>
+      <a href="/blog/<%= blog._id %>" class="blog-card">
+
+        <img 
+          src="<%= blog.coverImageURL %>" 
+          alt="blog cover"
+          class="blog-card-img"
+        >
+
+        <div class="blog-card-body">
+          <h3><%= blog.title %></h3>
+          <span>Read article →</span>
+        </div>
+
+      </a>
+    <% }) %>
+  </section>
+
+</main>
+
+</body>
+</html>

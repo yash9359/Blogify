@@ -1,0 +1,28 @@
+:root {
+  --bg: #0b0d10;
+  --card: #141821;
+  --text: #eaeaea;
+  --muted: #9ca3af;
+  --accent: #7c7cff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, system-ui;
+}
+
+body {
+  background: radial-gradient(circle at top, #111827, #000);
+  color: var(--text);
+}
+
+.page {
+  animation: fade .6s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; }
+}

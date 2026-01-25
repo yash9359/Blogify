@@ -1,0 +1,93 @@
+.blog {
+  max-width: 780px;
+  margin: auto;
+  padding: 3rem 1.5rem;
+}
+
+
+.blog-cover {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 22px;
+  margin-bottom: 2.5rem;
+}
+
+
+.blog-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-body {
+  line-height: 1.8;
+  color: #cbd5f5;
+  margin-top: 1.5rem;
+}
+
+
+.blog-author {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.author-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.comments {
+  margin-top: 4rem;
+}
+
+.comment-form {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  background: #0f1320;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+}
+
+.comment-form button {
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#7c7cff,#4f46e5);
+  border: none;
+  color: white;
+}
+
+.comment-card {
+  background: #141821;
+  padding: 1rem;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+
+.comment-card p {
+  margin-top: 0.4rem;
+  color: #9ca3af;
+}
+
+.auth-error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fecaca;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}

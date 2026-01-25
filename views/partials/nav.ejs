@@ -1,0 +1,54 @@
+<nav class="nav">
+  
+  <div class="nav-left">
+    <a href="/" class="logo">Blogify</a>
+  </div>
+
+  
+  <div class="nav-right">
+    <a href="/">Home</a>
+
+    <% if (locals.user) { %>
+      <a href="/blog/add-new">Write</a>
+
+      
+      <div class="user-dropdown">
+        <div class="user-trigger" id="userTrigger">
+          <img 
+            src="<%= user.profileImageURL %>" 
+            alt="profile"
+            class="avatar"
+          >
+          <span class="username">
+            <%= user.fullName %>
+          </span>
+        </div>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="/user/logout">Logout</a>
+        </div>
+      </div>
+
+    <% } else { %>
+      <a href="/user/signin">Signin</a>
+      <a href="/user/signup" class="signup">Signup</a>
+    <% } %>
+  </div>
+</nav>
+
+<!-- CLICK DROPDOWN SCRIPT -->
+<script>
+  const trigger = document.getElementById("userTrigger");
+  const menu = document.getElementById("dropdownMenu");
+
+  if (trigger && menu) {
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", () => {
+      menu.classList.remove("show");
+    });
+  }
+</script>

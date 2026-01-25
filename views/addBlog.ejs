@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/head') %>
+    <title>Write Blog | Blogify</title>
+
+
+    <link rel="stylesheet" href="/css/addBlog.css">
+</head>
+
+<body>
+
+  <%- include('./partials/nav') %>
+
+    <main class="page add-blog">
+
+      <section class="add-blog-header">
+        <h1>Write a new blog</h1>
+        <p>Share your thoughts with the world</p>
+      </section>
+
+      <form action="/blog" method="POST" enctype="multipart/form-data" class="add-blog-form">
+
+
+        <div class="field">
+          <label>Cover Image</label>
+          <input type="file" name="coverImage" accept="image/*" required>
+        </div>
+
+
+        <div class="field">
+          <label>Title</label>
+          <input type="text" name="title" placeholder="Enter blog title" required>
+        </div>
+
+        <div class="field">
+          <label>Content</label>
+          <div id="editor" style="height:300px;"></div>
+          <input type="hidden" name="body" id="body">
+        </div>
+
+
+        <button type="submit">Publish Blog</button>
+      </form>
+
+    </main>
+    <script>
+      const quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: 'Write your blog here...',
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            ['link'],
+            ['clean']
+          ]
+        }
+      });
+
+      const form = document.querySelector('.add-blog-form');
+      form.addEventListener('submit', (e) => {
+
+        const content = quill.getText().trim();
+        if (content.length === 0) {
+          e.preventDefault();
+          alert("Blog content cannot be empty");
+          return;
+        }
+
+        document.getElementById('body').value = quill.root.innerHTML;
+      });
+    </script>
+
+</body>
+
+</html>

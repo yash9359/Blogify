@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/head') %>
+    <title>
+      <%= blog.title %> | Blogify
+    </title>
+
+
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+
+<body>
+
+  <%- include('./partials/nav') %>
+
+    <main class="page blog">
+
+
+      <img src="<%= blog.coverImageURL %>" alt="blog cover" class="blog-cover">
+
+
+      <article class="blog-content">
+        <h1>
+          <%= blog.title %>
+        </h1>
+
+
+        <div class="blog-author">
+          <img src="<%= blog.createdBy.profileImageURL %>" alt="author" class="author-img">
+          <span>
+            <%= blog.createdBy.fullName %>
+          </span>
+        </div>
+
+        
+        <div class="blog-body">
+          <%- blog.body %>
+        </div>
+
+      </article>
+
+
+      <section class="comments">
+        <h3>Comments (<%= comments.length %>)</h3>
+
+        <% if (typeof err !=="undefined" ) { %>
+          <div class="auth-error">
+            <%= err %>
+          </div>
+          <% } %>
+
+            <% if (locals.user) { %>
+              <form action="/blog/comment/<%= blog._id %>" method="POST" class="comment-form">
+                <input type="text" name="content" placeholder="Write a comment..." required>
+                <button type="submit">Post</button>
+              </form>
+              <% } %>
+
+
+                <div class="comment-list">
+                  <% comments.forEach(c=> { %>
+                    <div class="comment-card">
+                      <strong>
+                        <%= c.createdBy.fullName %>
+                      </strong>
+                      <p>
+                        <%= c.content %>
+                      </p>
+                    </div>
+                    <% }) %>
+                </div>
+      </section>
+
+    </main>
+
+</body>
+
+</html>
